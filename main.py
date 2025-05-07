@@ -3,7 +3,7 @@ from logger import server_log
 from rabbit import rabbit_manager
 
 
-VERSION = "0.1"
+VERSION = "0.2"
 
 
 if __name__ == "__main__":

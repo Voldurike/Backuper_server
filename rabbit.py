@@ -49,11 +49,11 @@ class RabbittManager:
             id = message.get('id')
             ip = message.get('ip')
             device = message.get('device')
-            if not ip or not device:
-                server_log.warning("Invalid message format, missing ip or device field")
+            if not id or not ip or not device:
+                server_log.warning("Invalid message format, missing id, ip or device field")
                 ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
                 return
-            server_log.debug(f"\nReceived backup request for IP: {ip} - {device}")
+            server_log.info(f"\nReceived backup request for IP: {ip} - {device}")
             time.sleep(5)
             if device == 'ubnt':
                 api_handler.set_backup_status(id, backuper.backupUbnt(ip))
